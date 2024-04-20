@@ -5,4 +5,5 @@ class Task(models.Model):
     description_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField("date published")
     completed = models.BooleanField(default=False)
+    close_date = models.DateTimeField("date closed")
 # Create your models here.
