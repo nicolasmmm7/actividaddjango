@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Task
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the tasks index.")
+    latest_task_list = Task.objects.order_by("-pub_date")[:5]
+    output = ", ".join([q.name_text for q in latest_task_list])
+    return HttpResponse(output)
+
 # Create your views here.
 
 def descrip(request, task_id):
