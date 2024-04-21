@@ -6,4 +6,6 @@ class Task(models.Model):
     pub_date = models.DateTimeField("date published")
     completed = models.BooleanField(default=False)
     close_date = models.DateTimeField("date closed")
+    def __str__(self):
+        return self.name_text
 # Create your models here.
