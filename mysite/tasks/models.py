@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+import datetime
 class Task(models.Model):
     name_text = models.CharField(max_length=100)
     description_text = models.CharField(max_length=200)
