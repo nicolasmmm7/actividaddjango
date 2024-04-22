@@ -6,11 +6,10 @@ from django.template import loader
 
 def index(request):
     latest_task_list = Task.objects.order_by("-pub_date")[:5]
-    template = loader.get_template("tasks/index.html")
     context = {
         "latest_task_list": latest_task_list,
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, "tasks/index.html", context)
 
 # Create your views here.
 
