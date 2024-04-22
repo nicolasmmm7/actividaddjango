@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
 from .models import Task
 from django.template import loader
@@ -14,11 +14,9 @@ def index(request):
 # Create your views here.
 
 def descrip(request, task_id):
-    try:
-        task = Task.objects.get(pk=task_id)
-    except Task.DoesNotExist:
-        raise Http404("Question does not exist")
-    return render(request, "tasks/descrip.html", {"task": task})
+        task = get_object_or_404(Task, pk=task_id)
+        return render(request, "tasks/descrip.html", {"task": task})
+    
 
 def complet(request, task_id):
     response = "estas viendo si la tarea fue completada %s."
