@@ -12,4 +12,14 @@ class Task(models.Model):
     
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+    
+class User(models.Model):
+    user_name = models.CharField(max_length=50)
+    email = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=20)
+    
+    
+class Category(models.Model):
+    category_name = models.CharField(max_length=50)
+    description = models.CharField(max_length=200)
 # Create your models here.
