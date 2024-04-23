@@ -17,9 +17,13 @@ class User(models.Model):
     user_name = models.CharField(max_length=50)
     email = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=20)
+    def __str__(self):
+        return self.user_name
     
     
 class Category(models.Model):
     category_name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
+    def __str__(self):
+        return self.category_name
 # Create your models here.
