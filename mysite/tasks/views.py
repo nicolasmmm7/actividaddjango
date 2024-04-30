@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .models import Task, Category, User
 from django.template import loader
 from django.http import Http404
@@ -25,7 +25,16 @@ def p_user(request):
     }
     return render(request, "tasks/user/usuarios.html", context)
 
-# Create your views here.
+def user_list(request):
+    users = User.objects.all()
+    user_data = [{"name": user.user_name, "email": user.email, "phone": user.phone_number} for user in users]
+    return JsonResponse(user_data, safe=False)
+
+def category_list(request):
+    categorys = Category.objects.all()
+    category_data = [{"name": category.category_name, "description": category.description} for category in categorys]
+    return JsonResponse(category_data, safe=False)
+
 
 def descrip(request, task_id):
         task = get_object_or_404(Task, pk=task_id)
