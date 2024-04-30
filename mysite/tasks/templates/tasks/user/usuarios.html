@@ -1,0 +1,13 @@
+{% if latest_user_list %}
+    <h1>User</h1>
+    <ul>
+    {% for user in latest_user_list %}
+        <li>{{user.user_name}}</li>
+        <li>{{user.email}}</li>
+        <li>{{user.phone_number}}</li>
+        <p>----------------------</p>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No users are available.</p>
+{% endif %}

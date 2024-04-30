@@ -1,7 +1,10 @@
 {% if latest_category_list %}
+    <h1>Category</h1>
     <ul>
     {% for category in latest_category_list %}
-        <li><a href="/tasks/category/{{ category.id }}/">{{ category.category_name }}</a></li>
+        <li>{{category.category_name}}</li>
+        <li>{{category.description}}</li>
+        <p>----------------------</p>
     {% endfor %}
     </ul>
 {% else %}

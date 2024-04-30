@@ -18,15 +18,19 @@ def p_category(request):
     }
     return render(request, "tasks/category/categorias.html", context)
 
+def p_user(request):
+    latest_user_list = User.objects.all()
+    context = {
+        "latest_user_list": latest_user_list,
+    }
+    return render(request, "tasks/user/usuarios.html", context)
+
 # Create your views here.
 
 def descrip(request, task_id):
         task = get_object_or_404(Task, pk=task_id)
         return render(request, "tasks/descrip.html", {"task": task})
     
-def print_category(request, category_id):
-        category = get_object_or_404(Category, pk=category_id)
-        return render(request, "tasks/category/print_categorias.html", {"category": category})
     
 
 def complet(request, task_id):
