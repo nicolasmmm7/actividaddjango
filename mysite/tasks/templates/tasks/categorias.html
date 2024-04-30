@@ -1,9 +1,9 @@
 {% if latest_category_list %}
     <ul>
     {% for category in latest_category_list %}
-        <li><a href="/categorys/{{ category.id }}/">{{ category.category_name }}</a></li>
+        <li><a href="/tasks/category/{{ category.id }}/">{{ category.category_name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No categorys are available.</p>
+    <p>No category are available.</p>
 {% endif %}
