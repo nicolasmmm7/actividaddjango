@@ -35,6 +35,12 @@ def category_list(request):
     category_data = [{"name": category.category_name, "description": category.description} for category in categorys]
     return JsonResponse(category_data, safe=False)
 
+def tasks_completed_list(request):
+    tasks = Task.objects.filter(completed=True)
+    task_data = [{"name" : task.name_text, "description" : task.description_text, "date published" : task.pub_date, "completed?" : task.completed, "date closed" : task.close_date}for task in tasks]
+    return JsonResponse(task_data, safe=False)
+    
+
 
 def descrip(request, task_id):
         task = get_object_or_404(Task, pk=task_id)
