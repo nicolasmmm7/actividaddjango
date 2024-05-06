@@ -1,6 +1,6 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.urls import reverse
-from .models import Task
+from .models import Task, Category, User
 import json
 
 class TasksCompletedListTestCase(TestCase):
