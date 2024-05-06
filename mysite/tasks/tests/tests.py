@@ -1,6 +1,6 @@
+from tasks.models import Task 
 from django.test import TestCase, Client
 from django.urls import reverse
-from .models import Task, Category, User
 import json
 
 class TasksCompletedListTestCase(TestCase):
@@ -16,4 +16,3 @@ class TasksCompletedListTestCase(TestCase):
         self.assertEqual(len(task_data), 1)  # Debería haber solo una tarea completada
         self.assertEqual(task_data[0]["name"], "Tarea 1")
         self.assertEqual(task_data[0]["completed?"], True)
-# Create your tests here.
