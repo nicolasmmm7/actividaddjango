@@ -13,9 +13,7 @@ from .models import Task
 def test_tasks_completed_list():
     # Recuperamos todas las tareas de la base de datos
     all_tasks = Task.objects.all()
-    completed_tasks = [task for task in all_tasks if task.completed]
-    print("Tareas completadas en la base de datos:", completed_tasks)
-
+    
     # Creamos un cliente de prueba
     client = Client()
 
@@ -27,7 +25,7 @@ def test_tasks_completed_list():
 
     # Convertimos el contenido de la respuesta en un diccionario JSON
     task_data = json.loads(response.content)
-
+    
     # Verificamos que solo haya una tarea completada en la respuesta
     assert len(task_data) == len([task for task in all_tasks if task.completed])
 
