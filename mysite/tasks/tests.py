@@ -25,9 +25,10 @@ def test_tasks_completed_list():
 
     # Convertimos el contenido de la respuesta en un diccionario JSON
     task_data = json.loads(response.content)
-    
+  
     # Verificamos que solo haya una tarea completada en la respuesta
     assert len(task_data) == len([task for task in all_tasks if task.completed])
+    assert len(task_data) != 2
 
     # Verificamos que la tarea en la respuesta sea la correcta
     for task in task_data:
