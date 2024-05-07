@@ -1,6 +1,6 @@
 import os
 import django
-os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.mysite.settings'
 django.setup()
 import json
 from django.urls import reverse
@@ -13,6 +13,7 @@ from .models import Task
 def test_tasks_completed_list():
     # Recuperamos todas las tareas de la base de datos
     all_tasks = Task.objects.all()
+    assert len(all_tasks) ==0
     
     # Creamos un cliente de prueba
     client = Client()
@@ -28,7 +29,6 @@ def test_tasks_completed_list():
   
     # Verificamos que solo haya una tarea completada en la respuesta
     assert len(task_data) == len([task for task in all_tasks if task.completed])
-    assert len(task_data) != 2
 
     # Verificamos que la tarea en la respuesta sea la correcta
     for task in task_data:
