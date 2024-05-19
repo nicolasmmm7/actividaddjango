@@ -15,6 +15,7 @@ from .models import Task
 def test_tasks_completed_list():
     # Recuperamos todas las tareas de la base de datos
     all_tasks = Task.objects.all()
+    assert len(all_tasks)!=0
     
     # Creamos un cliente de prueba
     client = Client()
